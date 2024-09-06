@@ -124,7 +124,7 @@ export const PhonePage: React.FC = () => {
               onClick={() => setIsPerPageMenuOpen(!isPerPageMenuOpen)}
               onBlur={() => setIsPerPageMenuOpen(false)}
             >
-              {perPage || 'All'}
+              {perPage || '4'}
               <span
                 className={`${styles.dropdownIcon} ${
                   isPerPageMenuOpen ? styles.iconUp : styles.iconDown

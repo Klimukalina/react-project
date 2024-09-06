@@ -17,7 +17,7 @@ export const ProductSlider: React.FC<Props> = ({ goods, isLoading }) => {
     infinite: false,
     speed: 500,
     slidesToShow: 4,
-    slidesToScroll: 1,
+    slidesToScroll: 4,
   };
 
   if (isLoading) {

@@ -10,27 +10,28 @@
 .breadcrumbLink,
 .breadcrumb {
   font-family: Mont-Regular, sans-serif;
-  font-size: 14px;
-  line-height: 20px;
+  font-size: 16px;
+  line-height: 14px;
   color: $secondary;
   text-decoration: none;
   cursor: pointer;
-
-  @include hover("color", $main);
+  display: flex;
+  align-items: center;
+  margin: 0;
 }
 
 .homeIcon {
-  width: 20px;
-  height: 20px;
+  width: 16px;
+  height: 16px;
   background-image: url(../../../public/img/icons/icon-home.svg);
   background-size: cover;
 }
 
 .arrowIcon {
   display: inline-block;
-  width: 12px;
-  height: 12px;
-  background-image: url(../../../public/img/icons/icon-left.svg);
+  width: 16px;
+  height: 16px;
+  background-image: url(../../../public/img/icons/rifgt.svg);
   background-position: center;
   margin: 0 8px;
 }
@@ -40,7 +41,7 @@
   align-items: center;
   margin: 24px 0;
   font-family: Mont-Regular, sans-serif;
-  font-size: 12px;
+  font-size: 16px;
   line-height: 16px;
   color: $secondary;
   background-color: transparent;
@@ -56,5 +57,4 @@
   height: 16px;
   background-image: url(../../../public/img/icons/icon-left.svg);
   margin-right: 8px;
-  margin-top: -1px;
 }

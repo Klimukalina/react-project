@@ -7,7 +7,7 @@ import { FavoritesProvider } from './context/FavoritesContext';
 import { HomePage } from './pages/HomePage/HomePage';
 import { NotFoundPage } from './pages/NotFoundPage';
 import { AccessoriesPage } from './pages/AccessoriesPage/AccessoriesPage';
-import { PhonePage } from './pages/PhonesPage/PhonesPage';
+import { PhonesPage } from './pages/PhonesPage/PhonesPage';
 import { TabletsPage } from './pages/TabletsPage';
 import { ProductDetailsPage } from './pages/ProductDetailsPage/ProductDetailsPage';
 import { CartPage } from './pages/CartPage';
@@ -31,7 +31,7 @@ export const Root = () => (
                   <Route path=":productId" element={<ProductDetailsPage />} />
                 </Route>
                 <Route path="phones">
-                  <Route index element={<PhonePage />} />
+                  <Route index element={<PhonesPage />} />
                   <Route path=":productId" element={<ProductDetailsPage />} />
                 </Route>
                 <Route path="cart" element={<CartPage />} />

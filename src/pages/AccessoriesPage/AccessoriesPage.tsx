@@ -17,7 +17,7 @@ export const AccessoriesPage: React.FC = () => {
   const [searchParams, setSearchParams] = useSearchParams();
 
   const sortBy = searchParams.get('sort') || 'age';
-  const perPage = searchParams.get('perPage');
+  const perPage = searchParams.get('perPage') ?? '4';
 
   useEffect(() => {
     if (!goods?.length) {
@@ -147,10 +147,7 @@ export const AccessoriesPage: React.FC = () => {
       {isLoading ? (
         <Loader />
       ) : (
-        <ProductList
-          itemsPerPage={perPage ? +perPage : accessoriesAmount}
-          items={sortedAccessories}
-        />
+        <ProductList itemsPerPage={+perPage} items={sortedAccessories} />
       )}
     </div>
   );

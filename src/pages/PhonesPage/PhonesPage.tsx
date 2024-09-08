@@ -8,7 +8,7 @@ import { Breadcrumbs } from '../../components/BradCrumbs';
 import { Loader } from '../../components/Loader';
 import { ProductList } from '../../components/ProductList';
 
-export const PhonePage: React.FC = () => {
+export const PhonesPage: React.FC = () => {
   const [phones, setPhones] = useState<Product[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [isSortMenuOpen, setIsSortMenuOpen] = useState(false);
@@ -17,7 +17,7 @@ export const PhonePage: React.FC = () => {
   const [searchParams, setSearchParams] = useSearchParams();
 
   const sortBy = searchParams.get('sort') || 'age';
-  const perPage = searchParams.get('perPage');
+  const perPage = searchParams.get('perPage') || '4';
 
   useEffect(() => {
     if (!goods?.length) {
@@ -39,14 +39,14 @@ export const PhonePage: React.FC = () => {
 
   const sortByOptions = useMemo(
     () => [
-      { name: 'Newest', value: 'age' },
-      { name: 'Alphabetically', value: 'title' },
-      { name: 'Cheapest', value: 'price' },
+      { name: "Newest", value: "age" },
+      { name: "Alphabetically", value: "title" },
+      { name: "Cheapest", value: "price" },
     ],
-    [],
+    []
   );
 
-  const itemsPerPageOptions = useMemo(() => ['4', '8', '16', 'All'], []);
+  const itemsPerPageOptions = useMemo(() => ["4", "8", "16", "All"], []);
 
   const handleSortBySelect = (value: string) => {
     setIsSortMenuOpen(false);
@@ -54,6 +54,7 @@ export const PhonePage: React.FC = () => {
     params.set('sort', value);
     setSearchParams(params);
   };
+  
 
   const handlePerPageSelect = (value: string) => {
     setIsPerPageMenuOpen(false);
@@ -79,8 +80,8 @@ export const PhonePage: React.FC = () => {
       default:
         return sorted;
     }
-  }, [sortBy, phones]);
-  
+  }, 
+  [sortBy, phones]);
 
   return (
     <div className={styles.pageContainer}>
@@ -90,18 +91,22 @@ export const PhonePage: React.FC = () => {
       <div className={styles.filtersContainer}>
         <div className={styles.filterWrapper}>
           <div className={styles.dropdown}>
-            <button
-              className={styles.dropdownTrigger}
-              onClick={() => setIsSortMenuOpen(!isSortMenuOpen)}
-              onBlur={() => setIsSortMenuOpen(false)}
-            >
-              {sortByOptions.find(option => option.value === sortBy)?.name || 'Sort By'}
-              <span
-                className={`${styles.dropdownIcon} ${
-                  isSortMenuOpen ? styles.iconUp : styles.iconDown
-                }`}
-              />
-            </button>
+          <button
+            className={styles.dropdownTrigger}
+            onClick={() => {
+              console.log('Dropdown button clicked');
+              setIsSortMenuOpen(!isSortMenuOpen);
+            }}
+            // onBlur={() => setIsSortMenuOpen(false)} //
+          >
+            {sortByOptions.find(option => option.value === sortBy)?.name || 'Sort By'}
+            <span
+              className={`${styles.dropdownIcon} ${
+                isSortMenuOpen ? styles.iconUp : styles.iconDown
+              }`}
+            />
+          </button>
+
             <div className={`${styles.dropdownMenu} ${isSortMenuOpen ? styles.menuOpen : ''}`}>
               <ul className={styles.menuOptions}>
                 {sortByOptions.map(option => (
@@ -111,7 +116,7 @@ export const PhonePage: React.FC = () => {
                     onClick={() => handleSortBySelect(option.value)}
                   >
                     {option.name}
-                  </li>
+                </li>
                 ))}
               </ul>
             </div>
@@ -122,7 +127,7 @@ export const PhonePage: React.FC = () => {
             <button
               className={styles.dropdownTrigger}
               onClick={() => setIsPerPageMenuOpen(!isPerPageMenuOpen)}
-              onBlur={() => setIsPerPageMenuOpen(false)}
+             // onBlur={() => setIsPerPageMenuOpen(false)} //
             >
               {perPage || '4'}
               <span
@@ -150,7 +155,7 @@ export const PhonePage: React.FC = () => {
       {isLoading ? (
         <Loader />
       ) : (
-        <ProductList itemsPerPage={perPage ? +perPage : phonesAmount} items={sortedPhones} />
+        <ProductList itemsPerPage={+perPage} items={sortedPhones} />
       )}
     </div>
   );

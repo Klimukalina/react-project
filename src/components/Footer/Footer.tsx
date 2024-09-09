@@ -36,7 +36,11 @@ export const Footer: React.FC = () => {
       <nav className={styles.nav}>
         <ul className={styles.navList}>
           <li className={styles.navItem}>
-            <Link to="https://github.com/Klimukalina" className={styles.navLink}>
+            <Link 
+              to="https://github.com/Klimukalina" 
+              className={styles.navLink} 
+              target="_blank"
+            >
               Github
             </Link>
           </li>
@@ -54,7 +58,7 @@ export const Footer: React.FC = () => {
       </nav>
 
       <div className={styles.goToBackBlock}>
-        {isVisible && ( // Відображаємо кнопку лише коли прокручено більше ніж на 100 пікселів
+        {isVisible && (
           <>
             <p onClick={handleScroll} className={styles.goToBack}>
               Back to top

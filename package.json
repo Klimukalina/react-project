@@ -1,7 +1,7 @@
 {
   "name": "my-app",
   "version": "0.1.0",
-  "homepage": "https://klimukalina.github.io/react-project/",
+  "homepage": "",
   "private": true,
   "dependencies": {
     "@babel/plugin-transform-private-property-in-object": "^7.24.1",

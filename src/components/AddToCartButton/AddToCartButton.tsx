@@ -16,8 +16,12 @@ export const AddToCartButton: React.FC<AddToCartProps> = ({ product }) => {
     if ('itemId' in product) {
       return product;
     }
-    return goods?.find(item => item.itemId === product.id) ?? null;
-  }, [product, goods]);
+    return (
+      goods?.find(item => item.itemId === product.id) ??
+      cartItems?.find(cartItem => cartItem.product?.itemId === product.id)?.product ?? 
+      null
+    );
+  }, [product, goods, cartItems]);
 
   const handleAddToCart = () => {
     if (matchedProduct) {
@@ -34,9 +38,12 @@ export const AddToCartButton: React.FC<AddToCartProps> = ({ product }) => {
     }
   };
 
-  const isProductInCart = cartItems?.some(
-    cartItem => cartItem.product?.itemId === matchedProduct?.itemId,
-  );
+  const isProductInCart = useMemo(() => {
+    const result = cartItems?.some(
+      cartItem => cartItem.product?.itemId === matchedProduct?.itemId,
+    );
+    return result;
+  }, [cartItems, matchedProduct]);
 
   return (
     <>
